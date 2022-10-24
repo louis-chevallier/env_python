@@ -134,7 +134,7 @@ function install_modules() {
         
         if [ 0${WITH_TORCH_} == 0yes ]; then
             #conda install -y pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch-lts -c nvidia
-            if [ 0${TORCH_VERSION} == 1.11.0 ]; then
+            if [ 0${TORCH_VERSION} == 01.11.0 ]; then
                 conda install -y pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
             else    
                 conda install -y pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
@@ -144,11 +144,11 @@ function install_modules() {
             pip install torchviz # sudo apt install graphviz
             conda install -y -c fvcore -c iopath -c conda-forge fvcore iopath
 
-            if [ 0${PYTORCH3D_VERSION} == 06_2 ]; then
+            if [ 0${PYTORCH3D_VERSION} == 00.7.0 ]; then
                 conda install -y pytorch3d -c pytorch3d
-            elif   [ 0${PYTORCH3D_VERSION} == 0nightly ]; then
-                conda install -y pytorch3d -c pytorch3d                
-            else
+            elif [ 0${PYTORCH3D_VERSION} == 0facebook ]; then
+                FORCE_CUDA=1 pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"                
+            else 
                 pip install --no-index --no-cache-dir pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt1110/download.html
             fi
             
