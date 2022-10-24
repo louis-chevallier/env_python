@@ -52,6 +52,7 @@ class App:
                 pass
         es = ES()
         utillc.ekostream = es
+        EKOT("CHERRY SERVER STATUS")
         try :
             import torch, torchvision; 
             EKOX(torch.__version__)
