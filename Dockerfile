@@ -8,12 +8,21 @@ ENV TZ=Europe/Paris
 WORKDIR /tools
 RUN apt-get update --fix-missing && DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes --no-install-recommends build-essential git make wget
 RUN apt-get install  --assume-yes libgl1-mesa-glx
+
+COPY  buildenv.sh .
 RUN pwd
 RUN bash -ic 'source buildenv.sh && build_python_env_docker install  2>&1 | tee trace_building_env.txt'
 
 WORKDIR /data
-RUN gdown https://drive.google.com/drive/folders/1pFntQq6AovwZKt3L5BPM3X9NG6XdxCtw?usp=sharing
+# origin of folder data = https://drive.google.com/drive/folders/1pFntQq6AovwZKt3L5BPM3X9NG6XdxCtw?usp=sharing ( google drive)  
+# can be downloaded by python module gdown
+# gdown --fuzzy https://drive.google.com/drive/folders/1pFntQq6AovwZKt3L5BPM3X9NG6XdxCtw?usp=sharing
+# then gunzip runtime_data.tar.gz
+# then tar xf runtime_data.tar
+
+
 RUN pwd
+COPY data .
 RUN ls
 
 WORKDIR /code
