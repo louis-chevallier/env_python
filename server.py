@@ -14,7 +14,7 @@ fileDir = os.path.dirname(os.path.abspath(__file__))
 config = {
   '/' : {
       'tools.staticdir.on': True,
-      'tools.staticdir.dir': os.path.join(fileDir, 'www'),
+      'tools.staticdir.dir': os.path.join(fileDir, '.'),
     },
   'global' : {
       'server.socket_host' : '0.0.0.0', #192.168.1.5', #'127.0.0.1',
@@ -27,7 +27,7 @@ html = """
 <!DOCTYPE html>
 <html>
   <head>
-    <title>torch test</title>
+    <title>TORCH TEST</title>
   </head>
   <body>
     CONTENT

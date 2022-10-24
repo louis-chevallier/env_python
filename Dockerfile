@@ -20,7 +20,7 @@ WORKDIR /code
 #RUN git clone -b nosegfault https://louis-chevallier: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@github.com/louis-chevallier/cara.git
 #WORKDIR /code/cara
 
-#COPY  datadir/models .
+COPY  server.py .
 EXPOSE 8080
 WORKDIR /code
 CMD [ "python", "server.py" ] 
